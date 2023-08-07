@@ -24,7 +24,6 @@ router.post('/comment', CommentController.store);
 router.put('/comment/:id', CommentController.update);
 router.delete('/comment/:id', CommentController.destroy);
 
-
 /* server.get('/', function(req, res){
     fetch('http://localhost:8080/api/posts', {method:'GET'})
     .then(resposta => resposta.json())
