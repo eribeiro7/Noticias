@@ -1,4 +1,5 @@
 const express = require('express');
+var fetch = require('node-fetch');
 const router = express.Router();
 
 const UserController = require('./controllers/UserController');
@@ -22,5 +23,11 @@ router.get('/comment/:id', CommentController.find);
 router.post('/comment', CommentController.store);
 router.put('/comment/:id', CommentController.update);
 router.delete('/comment/:id', CommentController.destroy);
+
+/* server.get('/', function(req, res){
+    fetch('http://localhost:8080/api/posts', {method:'GET'})
+    .then(resposta => resposta.json())
+    .then(resposta => res.render('home', {dados:resposta}));
+}); */
 
 module.exports = router;
