@@ -5,6 +5,7 @@ const router = express.Router();
 const UserController = require('./controllers/UserController');
 const PostController = require('./controllers/PostController');
 const CommentController = require('./controllers/CommentController');
+const NotificationController = require('./controllers/NotificationController');
 //Rotas para os users
 router.get('/users', UserController.all);
 router.get('/user/:id', UserController.find);
@@ -23,7 +24,12 @@ router.get('/comment/:id', CommentController.find);
 router.post('/comment', CommentController.store);
 router.put('/comment/:id', CommentController.update);
 router.delete('/comment/:id', CommentController.destroy);
-
+//Rotas para os Comentários
+router.get('/notifications', NotificationController.all);
+router.get('/notification/:id', NotificationController.find);
+router.post('/notification', NotificationController.store);
+router.put('/notification/:id', NotificationController.update);
+router.delete('/notification/:id', NotificationController.destroy);
 
 /* server.get('/', function(req, res){
     fetch('http://localhost:8080/api/posts', {method:'GET'})
