@@ -1,0 +1,38 @@
+<div class="container mt-9">
+    <div class="row">
+        <div class="col-sm-12 tabela centered">
+            <h4>Lista de registos</h4>
+            <a href="create" class="btn btn-plus"><i class="fas fa-plus"></i></i></a>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Idade</th>
+                        <th>Nº Telefone</th>
+                        <th>Email</th>
+                        <th>Acção</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if dados}}
+                        {{#if dados.result}}
+                            {{#each dados.result}}
+                            <tr>
+                                <td>{{id}}</td>
+                                <td>{{title}}</td>
+                                <td>{{body}}</td>
+                                <td>{{user_id}}</td>
+                                <td><a href="show/{{id}}" class="btn"><i class="far fa-eye"></i></a>
+                                    <a href="edit/{{id}}" class="btn"><i class="fas fa-pencil-alt tabela"></i></a>
+                                    <a href="destroy/{{id}}" class="btn"><i class="fas fa-trash tabela"></i></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        {{/if}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
