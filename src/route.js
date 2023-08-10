@@ -31,10 +31,4 @@ router.post('/notification', NotificationController.store);
 router.put('/notification/:id', NotificationController.update);
 router.delete('/notification/:id', NotificationController.destroy);
 
-/* server.get('/', function(req, res){
-    fetch('http://localhost:8080/api/posts', {method:'GET'})
-    .then(resposta => resposta.json())
-    .then(resposta => res.render('home', {dados:resposta}));
-}); */
-
 module.exports = router;

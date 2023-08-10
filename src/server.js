@@ -22,6 +22,9 @@ server.get('/', function(req, res){
     .then(resposta => resposta.json())
     .then(resposta => res.render('home', {dados:resposta}));
 });
+server.get('/login', function(req, res){
+    res.render('user/login');
+});
 
 server.listen(process.env.PORT, () =>{
     console.log(`O servidor está a rodar em http://localhost:${process.env.PORT}`);
