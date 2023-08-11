@@ -27,7 +27,10 @@ server.get('/login', function(req, res){
 });
 
 server.get('/perfil', function(req, res){
-    res.render('user/profile');
+    fetch('http://localhost:8080/api/posts', {method:'GET'})
+    .then(resposta => resposta.json())
+    .then(resposta => res.render('user/profile', {dados:resposta}));
+    //res.render('user/profile');
 });
 
 server.listen(process.env.PORT, () =>{
