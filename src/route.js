@@ -6,6 +6,7 @@ const UserController = require('./controllers/UserController');
 const PostController = require('./controllers/PostController');
 const CommentController = require('./controllers/CommentController');
 const NotificationController = require('./controllers/NotificationController');
+const FriendController = require('./controllers/FriendController');
 //Rotas para os users
 router.get('/users', UserController.all);
 router.get('/user/:id', UserController.find);
@@ -30,5 +31,11 @@ router.get('/notification/:id', NotificationController.find);
 router.post('/notification', NotificationController.store);
 router.put('/notification/:id', NotificationController.update);
 router.delete('/notification/:id', NotificationController.destroy);
+//Rotas para os amigos
+router.get('/friends', FriendController.all);
+router.get('/friend/:id', FriendController.find);
+router.post('/friend', FriendController.store);
+router.put('/friend/:id', FriendController.update);
+router.delete('/friend/:id', FriendController.destroy);
 
 module.exports = router;

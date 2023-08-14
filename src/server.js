@@ -26,11 +26,27 @@ server.get('/login', function(req, res){
     res.render('user/login');
 });
 
-server.get('/perfil', function(req, res){
+server.get('/perfil',async function(req, res){
+    const postsRes = await fetch('http://localhost:8080/api/posts', {method:'GET'});
+    const posts = await postsRes.json();
+
+    const notificationRes = await fetch('http://localhost:8080/api/notifications', {method:'GET'})
+    const notifications = await notificationRes.json();
+
+    res.render('user/profile', {dados:posts, users:notifications});
+    
+    //.then(resposta => res.render('user/profile', {dados:resposta}));
+});
+
+server.get('/register', function(req, res){
+    res.render('user/register');
+});
+
+/* server.get('/perfil', function(req, res){
     fetch('http://localhost:8080/api/posts', {method:'GET'})
     .then(resposta => resposta.json())
     .then(resposta => res.render('user/profile', {dados:resposta}));
-});
+}); */
 
 server.listen(process.env.PORT, () =>{
     console.log(`O servidor está a rodar em http://localhost:${process.env.PORT}`);
