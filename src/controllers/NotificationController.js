@@ -4,7 +4,6 @@ module.exports = {
         let json = {error:'', result:[]};
         let notifications = await Notification.all();
         for(let i = 0; i < notifications.length; i++){
-            console.log(notifications[i].FULLNAME);
             json.result.push({
                 id: notifications[i].ID,
                 title: notifications[i].TITLE,

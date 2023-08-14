@@ -7,7 +7,9 @@ module.exports = {
                 if(error){
                     rejeitado(error);
                     return;
-                }else{ aceito(results);}
+                }else{
+                    aceito(results);
+                }
             });
         });
     },

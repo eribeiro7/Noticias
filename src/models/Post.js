@@ -3,7 +3,7 @@ const db = require('../db');
 module.exports = {
     all: () => {
         return new Promise((aceito, rejeitado) => {
-            db.query('SELECT * FROM posts', (error, results)=>{
+            db.query('SELECT * FROM posts p INNER JOIN users u ON u.ID = p.USER_ID', (error, results)=>{
                 if(error){
                     rejeitado(error);
                     return;

@@ -8,6 +8,7 @@ module.exports = {
                 id: posts[i].ID,
                 title: posts[i].TITLE,
                 body: posts[i].BODY,
+                fullname: posts[i].FULLNAME,
                 user_id: posts[i].USER_ID,
                 status: posts[i].TATUS,
                 created_at: posts[i].CREATED_AT,
