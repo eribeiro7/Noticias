@@ -38,6 +38,18 @@ server.get('/perfil',async function(req, res){
     //.then(resposta => res.render('user/profile', {dados:resposta}));
 });
 
+server.get('/feed',async function(req, res){
+    const postsRes = await fetch('http://localhost:8080/api/posts', {method:'GET'});
+    const posts = await postsRes.json();
+
+    const notificationRes = await fetch('http://localhost:8080/api/notifications', {method:'GET'})
+    const notifications = await notificationRes.json();
+
+    res.render('posts/feed', {dados:posts, users:notifications});
+    
+    //.then(resposta => res.render('user/profile', {dados:resposta}));
+});
+
 server.get('/register', function(req, res){
     res.render('user/register');
 });
