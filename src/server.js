@@ -14,6 +14,7 @@ server.use(express.json(), bodyParser.urlencoded({extended: false}));
 server.engine('handlebars', exphbs.engine({defaultLayout: "index"}));
 server.set('view engine', 'handlebars');
 server.use('/api', routes);
+server.use('/auth', require('./auth'));
 //Importando a pasta pública (Com o css e img)
 server.use(express.static(process.cwd() + '/public'));
 
@@ -50,6 +51,7 @@ server.get('/feed',async function(req, res){
     //.then(resposta => res.render('user/profile', {dados:resposta}));
 });
 
+
 server.get('/register', function(req, res){
     res.render('user/register');
 });
@@ -58,7 +60,30 @@ server.get('/register', function(req, res){
     fetch('http://localhost:8080/api/posts', {method:'GET'})
     .then(resposta => resposta.json())
     .then(resposta => res.render('user/profile', {dados:resposta}));
-}); */
+}); 
+
+server.post('/register_user', function(req, res){
+    const fullname = req.body.fullname;
+    const username = req.body.username;
+    const password = req.body.password;
+    const passwordretry = req.body.passwordretry;
+    const created_at = new Date();
+    const updated_at = new Date();
+    if(password == passwordretry){
+        dados = {'fullname':fullname, "username":username, "password": password, "created_at":created_at, "updated_at": updated_at};
+        fetch('http://localhost:8080/api/user', {
+            method:'POST',
+            body:JSON.stringify(dados),
+            headers:{'Content-Type':'application/json'}
+        })
+        .then(res.redirect('/login'));
+    }else{
+        const errormessage_register = "Palavra-passe é diferente com a de confirmação.";
+        res.render('user/register', {errormessage_register:errormessage_register});
+    }
+});
+
+*/
 
 server.listen(process.env.PORT, () =>{
     console.log(`O servidor está a rodar em http://localhost:${process.env.PORT}`);

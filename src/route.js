@@ -1,5 +1,4 @@
 const express = require('express');
-var fetch = require('node-fetch');
 const router = express.Router();
 
 const UserController = require('./controllers/UserController');
