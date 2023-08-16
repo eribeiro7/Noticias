@@ -8,7 +8,7 @@ const NotificationController = require('./controllers/NotificationController');
 const FriendController = require('./controllers/FriendController');
 //Rotas para os users
 router.get('/users', UserController.all);
-router.get('/user/:id', UserController.find);
+router.get('/user/:id',UserController.checkToken, UserController.find);
 router.post('/user', UserController.store);
 router.put('/user/:id', UserController.update);
 router.delete('/user/:id', UserController.destroy);
