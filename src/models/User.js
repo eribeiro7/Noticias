@@ -26,9 +26,9 @@ module.exports = {
             });
         });
     },
-    store: (fullname, username, password, created_at, update_at) => {
+    store: (fullname, username, password, created_at, updated_at) => {
         return new Promise((aceito, rejeitado) => {
-            db.query('INSERT INTO users (FULLNAME, USERNAME, PASSWORD, CREATED_AT, UPDATE_AT) VALUES (?, ?, ?, ?, ?)', [fullname, username, password, created_at, update_at], (error, results)=>{
+            db.query('INSERT INTO users (FULLNAME, USERNAME, PASSWORD, CREATED_AT, UPDATE_AT) VALUES (?, ?, ?, ?, ?)', [fullname, username, password, created_at, updated_at], (error, results)=>{
                 if(error){
                     rejeitado(error);
                     return;
@@ -37,9 +37,9 @@ module.exports = {
             });
         });
     },
-    update: (id, fullname, username, password, created_at, update_at) => {
+    update: (id, fullname, username, password, created_at, updated_at) => {
         return new Promise((aceito, rejeitado) => {
-            db.query('UPDATE users SET FULLNAME = ?, USERNAME = ?, PASSWORD = ?, CREATED_AT = ?, UPDATE_AT = ? WHERE ID = ?', [fullname, username, password, created_at, update_at, id], (error, results)=>{
+            db.query('UPDATE users SET FULLNAME = ?, USERNAME = ?, PASSWORD = ?, CREATED_AT = ?, UPDATE_AT = ? WHERE ID = ?', [fullname, username, password, created_at, updated_at, id], (error, results)=>{
                 if(error){
                     rejeitado(error);
                     return;
@@ -58,4 +58,19 @@ module.exports = {
             });
         });
     },
+    findByUsername: (username) => {
+        return new Promise((aceito, rejeitado) => {
+            db.query('SELECT * FROM users WHERE USERNAME = ?', [username], (error, results)=>{
+                if(error){
+                    rejeitado(error);
+                    return;
+                }
+                if(results.length > 0){
+                    aceito(results[0]);
+                }else{
+                    aceito(false);
+                }
+            });
+        });
+    }
 };

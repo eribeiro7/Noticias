@@ -12,6 +12,9 @@ router.get('/user/:id', UserController.find);
 router.post('/user', UserController.store);
 router.put('/user/:id', UserController.update);
 router.delete('/user/:id', UserController.destroy);
+router.post('/findByUsername', UserController.findByUsername);
+router.post('/auth/login', UserController.login);
+//router.get('/utilizador/:id', AuthController.checktoken, AuthController.getUser);
 //Rotas para os posts
 router.get('/posts', PostController.all);
 router.get('/post/:id', PostController.find);
